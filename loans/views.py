@@ -4,7 +4,7 @@ from .models import Loan, Payment, Reminder
 
 # Home page view
 def home(request):
-    return render(request, "home.html")
+    return render(request, "loans/home.html")
 
 # Login page view
 def login_page(request):
