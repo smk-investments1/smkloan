@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Dashboard</title>
+    <style>
+        body {
+            background-color: #121212; /* deep black background */
+            color: #f5f5f5; /* light text */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #000000;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.2);
+        }
+        .navbar a {
+            color: #00ffcc;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+        .navbar a:hover {
+            color: #ffffff;
+        }
+        .logo {
+            height: 40px;
+        }
+        .dashboard-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+        }
+        h2, h3 {
+            color: #00ffcc;
+            text-align: center;
+        }
+        p {
+            margin: 8px 0;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            background-color: #2a2a2a;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .section {
+            margin-top: 20px;
+        }
+        .summary-card {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .summary-card strong {
+            color: #00ffcc;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <img src="{% static 'smk_logo.png' %}" alt="SMK Logo" class="logo">
+        <a href="/">Home</a>
+        <a href="/login/">Login</a>
+        <a href="/dashboard/">Dashboard</a>
+        <a href="/logout/">Logout</a>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <h2>Loan Dashboard</h2>
+
+        <!-- Loan Summary Card -->
+        <div class="summary-card">
+            <p><strong>Loan ID:</strong> {{ loan.loan_id }}</p>
+            <p><strong>Customer:</strong> {{ loan.customer.name }}</p>
+            <p><strong>Principal:</strong> {{ loan.principal }}</p>
+            <p><strong>Duration:</strong> {{ loan.duration }} months</p>
+            <p><strong>Monthly Installment:</strong> {{ loan.monthly_installment }}</p>
+        </div>
+
+        <!-- Payments Section -->
+        <div class="section">
+            <h3>Payments</h3>
+            <ul>
+                {% for payment in payments %}
+                    <li>{{ payment.date }} — {{ payment.amount }} ({{ payment.status }})</li>
+                {% empty %}
+                    <li>No payments recorded yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Reminders Section -->
+        <div class="section">
+            <h3>Reminders</h3>
+            <ul>
+                {% for reminder in reminders %}
+                    <li>{{ reminder.reminder_date }} — {{ reminder.message }} ({{ reminder.status }})</li>
+                {% empty %}
+                    <li>No reminders set yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
