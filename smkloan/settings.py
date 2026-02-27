@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-idz6!$$+4uzvi(r68)c=gt&#zhdfvsuvja@gf(cvb#z)__(q3k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-import os
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'smkloan.onrender.com']
 
 
 # Application definition
