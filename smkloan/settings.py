@@ -40,7 +40,17 @@ INSTALLED_APPS = [
     'loans',
 ]
 
-MIDDLEWARE = [ 'django.middleware.security.SecurityMiddleware', 'whitenoise.middleware.WhiteNoiseMiddleware', # add this 'django.contrib.sessions.middleware.SessionMiddleware', 'django.middleware.common.CommonMiddleware', 'django.middleware.csrf.CsrfViewMiddleware', 'django.contrib.auth.middleware.AuthenticationMiddleware', 'django.contrib.messages.middleware.MessageMiddleware', 'django.middleware.clickjacking.XFrameOptionsMiddleware', ]
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # added for static files
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
 ROOT_URLCONF = 'smkloan.urls'
 
 TEMPLATES = [
@@ -102,20 +112,17 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.0/howto/static-files/
-
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 
-# Tell Django where your custom static folder is
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-# Where collectstatic will copy everything for deployment
 STATIC_ROOT = BASE_DIR / "staticfiles"
-# Whitenoise static files storage
+
+# Whitenoise storage for production
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+# Hosts allowed to serve the app
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'smkloan.onrender.com']
