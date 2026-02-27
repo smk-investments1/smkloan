@@ -115,6 +115,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+
+# Tell Django where your custom static folder is
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+# Where collectstatic will copy everything for deployment
 STATIC_ROOT = BASE_DIR / "staticfiles"
