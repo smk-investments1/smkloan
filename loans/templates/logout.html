@@ -1,29 +1,26 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SMK Loan Solutions</title>
+    <title>Logout - SMK Loan Solutions</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <!-- Header with logo and navigation -->
+    <!-- Header -->
     <header>
         <img src="{% static 'images/logo.png' %}" alt="SMK Loan Solutions Logo" class="logo">
         <nav>
             <a href="/">Home</a>
             <a href="/login/">Login</a>
-            <a href="/logout/">Logout</a>
         </nav>
     </header>
 
     <!-- Main content -->
     <main>
-        <h1>Welcome to SMK Loan Solutions!</h1>
-        <p>Your app is live on Render 🎉</p>
-        <button>Get Started</button>
+        <h1>You have been logged out</h1>
+        <p>Thank you for using SMK Loan Solutions.</p>
+        <a href="/" class="button">Return to Home</a>
     </main>
 </body>
 </html>
